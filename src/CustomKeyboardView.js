@@ -1,4 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {Platform, requireNativeComponent} from 'react-native';
 import TextInputKeyboardManagerIOS from './TextInputKeyboardMangerIOS';
 import TextInputKeyboardManagerAndroid from './TextInputKeyboardManagerAndroid';
@@ -10,19 +12,9 @@ const IsIOS = Platform.OS === 'ios';
 const CustomKeyboardViewNativeAndroid = requireNativeComponent('CustomKeyboardViewNative');
 
 export default class CustomKeyboardView extends Component {
-  static propTypes = {
-    inputRef: PropTypes.object,
-    initialProps: PropTypes.object,
-    component: PropTypes.string,
-    onItemSelected: PropTypes.func,
-  };
-  static defaultProps = {
-    initialProps: {}
-  }
 
   constructor(props) {
     super(props);
-
     const {inputRef, component, initialProps, onItemSelected} = props;
     if (component) {
       this.addOnItemSelectListener(onItemSelected, component);
@@ -121,4 +113,15 @@ export default class CustomKeyboardView extends Component {
     }
     return null;
   }
+}
+
+CustomKeyboardView.propTypes = {
+  inputRef: PropTypes.object,
+  initialProps: PropTypes.object,
+  component: PropTypes.string,
+  onItemSelected: PropTypes.func,
+}
+
+CustomKeyboardView.defaultProps = {
+  initialProps: {}
 }

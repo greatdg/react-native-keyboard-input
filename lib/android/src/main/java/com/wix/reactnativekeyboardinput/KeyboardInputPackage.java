@@ -40,7 +40,6 @@ public class KeyboardInputPackage implements ReactPackage {
         return Arrays.<ViewManager>asList(new CustomKeyboardRootViewManager(mLayout));
     }
 
-    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
